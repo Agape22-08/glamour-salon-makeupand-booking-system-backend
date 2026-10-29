@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "glamour-salon-makeup-and-booking-system-midterm",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "A2 POST save beauty service",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"name\": \"Hair Braiding\"}" },
+        "url": "http://localhost:8080/api/beauty-services/save"
+      }
+    },
+    {
+      "name": "A2 POST save station",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"stationNumber\": 1, \"name\": \"Station Alpha\"}" },
+        "url": "http://localhost:8080/api/stations/save"
+      }
+    },
+    {
+      "name": "A2 POST save stylist",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"firstName\": \"Amina\", \"lastName\": \"Uwase\", \"phone\": \"0781000001\", \"station\": {\"id\": \"STATION_UUID_HERE\"}}" },
+        "url": "http://localhost:8080/api/stylists/save"
+      }
+    },
+    {
+      "name": "A2 POST save customer",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"firstName\": \"Alice\", \"lastName\": \"Keza\", \"phone\": \"0789456123\", \"email\": \"alice@example.com\"}" },
+        "url": "http://localhost:8080/api/customers/save"
+      }
+    },
+    {
+      "name": "A2 POST save booking",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"bookingDate\": \"2026-10-15\", \"serviceName\": \"Makeup\", \"durationMinutes\": 60, \"customer\": {\"id\": \"CUSTOMER_UUID_HERE\"}, \"stylist\": {\"id\": \"STYLIST_UUID_HERE\"}}" },
+        "url": "http://localhost:8080/api/bookings/save"
+      }
+    },
+    {
+      "name": "A2 GET all bookings",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/all"
+      }
+    },
+    {
+      "name": "A2 GET booking by id",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/BOOKING_UUID_HERE"
+      }
+    },
+    {
+      "name": "A2 PUT update booking",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"bookingDate\": \"2026-10-16\", \"serviceName\": \"Manicure\", \"durationMinutes\": 45, \"customer\": {\"id\": \"CUSTOMER_UUID_HERE\"}, \"stylist\": {\"id\": \"STYLIST_UUID_HERE\"}}" },
+        "url": "http://localhost:8080/api/bookings/update/BOOKING_UUID_HERE"
+      }
+    },
+    {
+      "name": "A2 DELETE booking",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:8080/api/bookings/delete/BOOKING_UUID_HERE"
+      }
+    },
+    {
+      "name": "B1 GET customers by lastName",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/customers/by-last-name?lastName=keza"
+      }
+    },
+    {
+      "name": "B2 GET bookings by status",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/by-status?status=BOOKED"
+      }
+    },
+    {
+      "name": "B3 GET bookings between dates",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/between?start=2026-10-01&end=2026-10-31"
+      }
+    },
+    {
+      "name": "C1 GET stylists by beauty service",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/stylists/by-beauty-service?name=make"
+      }
+    },
+    {
+      "name": "C2 GET free stations",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/stations/free"
+      }
+    },
+    {
+      "name": "C3 GET unused beauty services",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/beauty-services/unused"
+      }
+    },
+    {
+      "name": "C4 GET customers of stylist",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/customers/of-stylist/STYLIST_UUID_HERE"
+      }
+    },
+    {
+      "name": "D1 POST booking date in past (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"bookingDate\": \"2024-01-01\", \"serviceName\": \"Makeup\", \"durationMinutes\": 60, \"customer\": {\"id\": \"CUSTOMER_UUID_HERE\"}, \"stylist\": {\"id\": \"STYLIST_UUID_HERE\"}}" },
+        "url": "http://localhost:8080/api/bookings/save"
+      }
+    },
+    {
+      "name": "D2 PATCH booking status",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8080/api/bookings/BOOKING_UUID_HERE/status?status=IN_PROGRESS"
+      }
+    },
+    {
+      "name": "D3 PUT add beauty service to stylist",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/api/stylists/STYLIST_UUID_HERE/beauty-services/BEAUTY_SERVICE_UUID_HERE"
+      }
+    },
+    {
+      "name": "D4 PATCH move stylist to station",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8080/api/stylists/STYLIST_UUID_HERE/station?stationNumber=4"
+      }
+    },
+    {
+      "name": "E1 POST save product usage",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"productName\": \"Hair gel\", \"notes\": \"Strong hold\", \"quantity\": 1}" },
+        "url": "http://localhost:8080/api/product-usages/save?bookingId=SERVED_BOOKING_UUID_HERE"
+      }
+    },
+    {
+      "name": "E2 GET product usage history by customer phone",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/product-usages/customer/0789456123"
+      }
+    },
+    {
+      "name": "E3 DELETE product usage",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:8080/api/product-usages/delete/PRODUCT_USAGE_UUID_HERE"
+      }
+    },
+    {
+      "name": "F1 GET bookings stats by status",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/stats/by-status"
+      }
+    },
+    {
+      "name": "F2 PATCH cancel day for stylist",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8080/api/bookings/cancel-day?stylistId=STYLIST_UUID_HERE&date=2026-10-20"
+      }
+    },
+    {
+      "name": "BONUS GET dashboard summary",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/dashboard/summary"
+      }
+    },
+    {
+      "name": "BONUS GET bookings page",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/bookings/page?page=0&size=5&sort=bookingDate,desc"
+      }
+    }
+  ]
+}
